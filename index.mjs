@@ -1,4 +1,4 @@
-import fs from "fs/promises";
+import fs, { writeFile } from "fs/promises";
 /* 
 commonjs module implementation, you don't get access to __dirname or filename if not using commonjs
 import path from "path"
@@ -16,9 +16,7 @@ const data = {
   body: "hello there",
 };
 
-console.log(Object.keys(data));
-
 for (let key in data) {
   template = template.replace(`{${key}}`, data[key]);
 }
-console.log(template);
+await writeFile(new URL("update.html", import.meta.url), template);
