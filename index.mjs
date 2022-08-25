@@ -16,7 +16,12 @@ const data = {
   body: "hello there",
 };
 
-for (let key in data) {
+/* for (let key in data) {
   template = template.replace(`{${key}}`, data[key]);
+} */
+
+for (let [k, v] of Object.entries(data)) {
+  template = template.replace(`{${k}}`, v);
 }
-await writeFile(new URL("update.html", import.meta.url), template);
+
+//await writeFile(new URL("update.html", import.meta.url), template);
