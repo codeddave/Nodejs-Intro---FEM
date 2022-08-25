@@ -4,5 +4,21 @@ commonjs module implementation, you don't get access to __dirname or filename if
 import path from "path"
 const template1 =  await fs.readFile(path.join(__dirname, "template.html")) */
 
-const template = await fs.readFile(new URL("template.html", import.meta.url));
+//const template = await fs.readFile(new URL("template.html", import.meta.url));
 //Generates a buffer, can be converted to a string with a .toString method
+
+let template = await fs.readFile(
+  new URL("template.html", import.meta.url),
+  "utf-8"
+);
+const data = {
+  title: "hello",
+  body: "hello there",
+};
+
+console.log(Object.keys(data));
+
+for (let key in data) {
+  template = template.replace(`{${key}}`, data[key]);
+}
+console.log(template);
