@@ -13,6 +13,10 @@ const db = [];
 app.get("/todo", (req, res) => {
   res.status(200).json(db);
 });
+app.get("/todo/:id", (req, res) => {
+  const todo = db.find((todo) => todo.id === req.params.id);
+  res.status(200).json({ data: todo });
+});
 app.post("/todo", (req, res) => {
   const newTodo = {
     id: Date.now(),
