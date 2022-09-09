@@ -12,9 +12,10 @@ readFile(new URL("appss.mjs", import.meta.url), "utf-8", (err, data) => {
 });
  */
 
+
 try {
-  const test = await readFile(new URL("app.mjs", import.meta.url), "utf-8");
-  console.log(test);
+  const test = readFile(new URL("appss.mjs", import.meta.url), "utf-8")
 } catch (error) {
-  console.log(error);
+    console.log(errZ)
+    
 }
